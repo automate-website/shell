@@ -26,7 +26,7 @@
     </licenses>
 
     <name>${project.groupId}:${project.artifactId}</name>
-    <description>Shell for automate.website API</description>
+    <description>Shell for the automate.website API</description>
     <url>https://github.com/automate-website/shell</url>
 
     <developers>
