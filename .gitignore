@@ -1,0 +1,7 @@
+/.settings/
+/.classpath
+/.project
+/target/
+/spring-shell.log
+/.vagrant/
+/Vagrantfile
