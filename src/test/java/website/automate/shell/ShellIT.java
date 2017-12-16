@@ -1,6 +1,8 @@
 package website.automate.shell;
 
+import static java.text.MessageFormat.format;
 import static java.util.Arrays.asList;
+import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.when;
 import org.junit.Assert;
 import org.junit.Before;
@@ -61,13 +63,19 @@ public class ShellIT extends TestBase {
     @Test
     public void listScenarios() {
         login();
-        executeAndVerify("list-scenarios " + project.getTitle(), scenario.getName());
+        executeAndVerify(format("list-scenarios {0}", project.getTitle()), scenario.getName());
     }
     
     @Test
     public void runScenarios() {
         login();
-        execute("run-scenarios " + project.getTitle() + " " + scenario.getName());
+        execute(format("run-scenarios {0} {1}", project.getTitle(), scenario.getName()));
+    }
+    
+    @Test
+    public void runScenariosInParallel() {
+        login();
+        execute(format("run-scenarios {0} {1} --parallel", project.getTitle(), scenario.getName()));
     }
     
     private void assertEquals(Object actualValue, String expectedValue) {
@@ -75,13 +83,17 @@ public class ShellIT extends TestBase {
     }
     
     private Object execute(final String commandStr) {
-        return shell.evaluate(new Input() {
+        Object result = shell.evaluate(new Input() {
             @Override
             public String rawText() {
                 return commandStr;
             }
 
         });
+        if(result != null) {
+            assertFalse(result.toString(), result.toString().toLowerCase().contains("exception"));
+        }
+        return result;
     }
     
     private void executeAndVerify(final String commandStr, String expectedResult) {
