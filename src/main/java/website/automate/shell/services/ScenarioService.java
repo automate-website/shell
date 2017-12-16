@@ -1,14 +1,11 @@
 package website.automate.shell.services;
 
 import static java.text.MessageFormat.format;
-import static java.util.Arrays.asList;
-import static java.util.Collections.singleton;
 import static java.util.stream.Stream.concat;
 import static website.automate.shell.support.SystemMessageUtils.log;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,11 +19,11 @@ import website.automate.manager.api.client.ScenarioRetrievalRemoteService;
 import website.automate.manager.api.client.model.Job;
 import website.automate.manager.api.client.model.Job.JobProfile;
 import website.automate.manager.api.client.model.Job.JobStatus;
-import website.automate.manager.api.client.model.Job.TakeScreenshots;
 import website.automate.manager.api.client.model.Project;
 import website.automate.manager.api.client.model.Scenario;
 import website.automate.manager.api.client.support.Constants;
 import website.automate.shell.ex.ProjectNotFoundException;
+import website.automate.shell.factories.JobFactory;
 import website.automate.shell.support.ShellContextHolder;
 
 @Service
@@ -42,15 +39,19 @@ public class ScenarioService {
 
     private JobManagementRemoteService jobRemoteService;
 
+    private JobFactory jobFactory;
+    
     @Autowired
     public ScenarioService(ShellContextHolder shellContextHolder,
             ProjectRetrievalRemoteService projectRemoteService,
             ScenarioRetrievalRemoteService scenarioRemoteService,
-            JobManagementRemoteService jobRemoteService) {
+            JobManagementRemoteService jobRemoteService,
+            JobFactory jobFactory) {
         this.shellContextHolder = shellContextHolder;
         this.scenarioRemoteService = scenarioRemoteService;
         this.projectRemoteService = projectRemoteService;
         this.jobRemoteService = jobRemoteService;
+        this.jobFactory = jobFactory;
     }
 
     public List<String> getScenarios(String projectName) {
@@ -67,7 +68,7 @@ public class ScenarioService {
                 .filter(scenario -> scenarioNames.contains(scenario.getName()))
                 .map(scenario -> scenario.getId()).collect(Collectors.toList());
 
-        Collection<Job> jobsToCreate = createJobs(selectedScenarios, parallel);
+        Collection<Job> jobsToCreate = jobFactory.createInstances(selectedScenarios, parallel);
 
         log("Running scenarios...");
         Collection<Job> runningJobs =
@@ -143,27 +144,6 @@ public class ScenarioService {
 
     private List<String> getJobIds(Collection<Job> jobs) {
         return jobs.stream().map(job -> job.getId()).collect(Collectors.toList());
-    }
-
-    private List<Job> createJobs(Collection<String> scenarioIds, boolean parallel) {
-        if (parallel) {
-            return asList(createJob(scenarioIds));
-        }
-        return scenarioIds.stream().map(scenarioId -> createJob(scenarioId))
-                .collect(Collectors.toList());
-    }
-
-    private Job createJob(String scenarioId) {
-        Job job = new Job();
-        job.setScenarioIds(singleton(scenarioId));
-        job.setTakeScreenshots(TakeScreenshots.ON_FAILURE);
-        return job;
-    }
-
-    private Job createJob(Collection<String> scenarioIds) {
-        Job job = new Job();
-        job.setScenarioIds(new HashSet<>(scenarioIds));
-        return job;
     }
 
     private Project getProjectByName(String name) {
