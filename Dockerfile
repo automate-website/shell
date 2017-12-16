@@ -1,6 +1,6 @@
 FROM java:openjdk-8-jre
 
-ARG SHELL_VERSION 1.0.0
+ARG SHELL_VERSION=1.0.0
 
 ADD https://oss.sonatype.org/service/local/repositories/releases/content/website/automate/shell/$SHELL_VERSION/shell-$SHELL_VERSION.jar /app.jar
 
