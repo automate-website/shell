@@ -6,7 +6,7 @@ Provides a shell to interact with the automate.website API.
 
 ## Continuous Integration and Delivery
 
-See [.travis-ci.yml](.travis-ci.yml).
+See [.travis.yml](.travis.yml).
 
 ## Versioning
 
@@ -14,8 +14,8 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Maintainers
 
-- [build-failure](https://gitlab.com/build-failure)
-- [dimw](https://gitlab.com/dimw)
+- [build-failure](https://github.com/build-failure)
+- [dimw](https://github.com/dimw)
 
 ## License
 
