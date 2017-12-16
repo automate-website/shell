@@ -1,4 +1,4 @@
-FROM java:openjdk-8-jre
+FROM openjdk:8-jre-alpine
 
 ARG SHELL_VERSION=1.0.0
 
