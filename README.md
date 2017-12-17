@@ -1,4 +1,4 @@
-# Automate Website Shell (aws)
+# Automate Website Shell (AWS)
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/website.automate/shell/badge.svg)](https://maven-badges.herokuapp.com/maven-central/website.automate/shell) [![Build Status](https://travis-ci.org/automate-website/shell.svg?branch=master)](https://travis-ci.org/automate-website/shell) [![codecov.io](https://codecov.io/github/automate-website/shell/coverage.svg?branch=master)](https://codecov.io/github/automate-website/shell?branch=master) [![Docker Hub](https://img.shields.io/docker/pulls/automatewebsite/shell.svg)](https://hub.docker.com/r/automatewebsite/shell) 
 
@@ -30,15 +30,15 @@ Run aws script:
 
 Comands may be bundled into a script file and executed:
 
-    echo "login admin secret" > /script.aws && ./shell-1.0.0.jar @script.aws
+    echo "list-scenarios example-project" > /script.aws && ./shell-1.0.0.jar @script.aws
 
 Certain order assumed, when parameters specified without names:
 
-    login admin secret
+    run-scenarios example-project example-scenario
 
 Explicit parameter naming allows reordering:
 
-    login --password secret --user admin
+    run-scenarios --scenarios example-scenario --project example-project 
 
 | Name  | Parameters | Description | Example |
 | ------------- | ------------- | ------------- | ------------- |
