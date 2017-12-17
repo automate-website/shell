@@ -8,5 +8,5 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - initial implementation including login, project listing, scenario listing and execution.
 
-[1.0.0]: https://github.com/automate-website/waml-io/compare/1.0.0
-[Unreleased]: https://github.com/automate-website/waml-io/compare/1.0.0...master
+[1.0.0]: https://github.com/automate-website/shell/compare/1.0.0
+[Unreleased]: https://github.com/automate-website/shell/compare/1.0.0...master
