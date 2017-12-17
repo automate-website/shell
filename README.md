@@ -6,7 +6,7 @@ Provides a shell to interact with the automate.website API.
 
 ## Getting Started
 
-### Java Artifact (Java 8)
+### Java Artifact (>= JRE 8)
 
 - Cross-platform:
 
