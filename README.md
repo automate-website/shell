@@ -20,6 +20,15 @@ Provides a shell to interact with the automate.website API.
 
     ./shell-1.0.0.jar
 
+## Commands
+
+| Name  | Parameters | Description | Example |
+| ------------- | ------------- | ------------- | ------------- |
+| login | --username, --password  | Authenticate against automate.website API. | login admin secret |
+| list-projects | -  | List all projects for the authenticated user. | list-projects |
+| list-scenarios | --project  | List project scenarios for the authenticated user. | list-scenarios example-project |
+| run-scenarios | --project,--scenarios  | Run selected project scenarios for the authenticated user. | run-scenarios example-project example-scenario |
+
 ## References
 Refer to the [changelog] for recent notable changes and modifications.
 
