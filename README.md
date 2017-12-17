@@ -6,6 +6,10 @@ Provides a shell to interact with the automate.website API.
 
 ## Getting Started
 
+### Docker Image
+
+    docker run -it automatewebsite/shell
+
 ### Java Artifact (>= JRE 8)
 
 - Cross-platform:
@@ -15,10 +19,6 @@ Provides a shell to interact with the automate.website API.
 - CentOS/Ubuntu/Debian
 
     ./shell-1.0.0.jar
-
-### Docker Image
-
-    docker run -it automatewebsite/shell
 
 ## References
 Refer to the [changelog] for recent notable changes and modifications.
