@@ -12,11 +12,11 @@ Provides a shell to interact with the automate.website API.
 
 ### Java Artifact (>= JRE 8)
 
-- Cross-platform:
+#### Cross-platform:
 
     java -jar shell-1.0.0.jar
 
-- CentOS/Ubuntu/Debian
+#### CentOS/Ubuntu/Debian
 
     ./shell-1.0.0.jar
 
