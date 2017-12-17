@@ -8,7 +8,7 @@ Provides a shell to interact with the automate.website API.
 
 ### Java Artifact (Java 8)
 
-- cross-platform:
+- Cross-platform:
 
     java -jar shell-1.0.0.jar
 
